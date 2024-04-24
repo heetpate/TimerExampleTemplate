@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.titleLabel = new System.Windows.Forms.Label();
             this.startButton = new System.Windows.Forms.Button();
@@ -36,7 +37,8 @@
             this.debugLabel1 = new System.Windows.Forms.Label();
             this.colourLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
-            this.timeOutput = new System.Windows.Forms.Label();
+            this.timerOutput = new System.Windows.Forms.Label();
+            this.countTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // titleLabel
@@ -127,17 +129,22 @@
             this.timeLabel.TabIndex = 22;
             this.timeLabel.Text = "elapsed time:";
             // 
-            // timeOutput
+            // timerOutput
             // 
-            this.timeOutput.AutoSize = true;
-            this.timeOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeOutput.ForeColor = System.Drawing.Color.White;
-            this.timeOutput.Location = new System.Drawing.Point(159, 144);
-            this.timeOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.timeOutput.Name = "timeOutput";
-            this.timeOutput.Size = new System.Drawing.Size(20, 24);
-            this.timeOutput.TabIndex = 23;
-            this.timeOutput.Text = "0";
+            this.timerOutput.AutoSize = true;
+            this.timerOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timerOutput.ForeColor = System.Drawing.Color.White;
+            this.timerOutput.Location = new System.Drawing.Point(159, 144);
+            this.timerOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.timerOutput.Name = "timerOutput";
+            this.timerOutput.Size = new System.Drawing.Size(20, 24);
+            this.timerOutput.TabIndex = 23;
+            this.timerOutput.Text = "0";
+            // 
+            // countTimer
+            // 
+            this.countTimer.Interval = 1000;
+            this.countTimer.Tick += new System.EventHandler(this.countTimer_Tick);
             // 
             // Form1
             // 
@@ -145,7 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(255, 286);
-            this.Controls.Add(this.timeOutput);
+            this.Controls.Add(this.timerOutput);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.colourLabel);
             this.Controls.Add(this.startButton);
@@ -158,6 +165,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Timer";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,7 +180,8 @@
         private System.Windows.Forms.Label debugLabel1;
         private System.Windows.Forms.Label colourLabel;
         private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.Label timeOutput;
+        private System.Windows.Forms.Label timerOutput;
+        private System.Windows.Forms.Timer countTimer;
     }
 }
 
